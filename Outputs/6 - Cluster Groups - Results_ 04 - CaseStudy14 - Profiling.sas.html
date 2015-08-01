@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html class="ods_d24b8a61-de2e-4621-9352-b618a08686e5" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="SAS 9.4" name="generator">
+<title>Results:  04 - CaseStudy14 - Profiling.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c section > table, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c section > pre, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c div > table,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c div > pre, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c article > table, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c article > pre,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j section > table, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j section > pre, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j div > table,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j div > pre, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j article > table, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j article > pre,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c p.note, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c p.warning, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c p.error, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c p.fatal,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j p.note, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j p.warning, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j p.error, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j p.fatal,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.c > table.layoutcontainer, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.l table, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.l pre, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.l p.note,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.l p.warning, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.l p.error, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.l p.fatal { margin-left: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.c table, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.c pre, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.c p.note,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.c p.warning, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.c p.error, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r table, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r pre, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r p.note,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r table, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r pre, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r p.note,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r p.warning, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r p.error, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion.r p.fatal { margin-right: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 article, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 aside, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 details, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 figcaption, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 figure, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 footer, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 header, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 hgroup, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 nav, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 section { display: block }
+html.ods_d24b8a61-de2e-4621-9352-b618a08686e5 { font-size: 100% }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 ul, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 dd { margin: 0 0 0 40px }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 nav ul, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 img { border: 0; vertical-align: middle }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 svg:not(:root) { overflow: hidden }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 figure { margin: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 table { border-collapse: collapse; border-spacing: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 p { margin-top: 0; text-align: left }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 span { text-align: left }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 table { margin-bottom: 1em }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 td, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 td[class$="fixed"], .ods_d24b8a61-de2e-4621-9352-b618a08686e5 th[class$="fixed"] { white-space: pre }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 section, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 article { padding-top: 1px }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .stacked-value { text-align: left; display: block }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .stacked-cell > .stacked-value, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 td.data > td.data, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 th.data > td.data, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 th.data > th.data, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 td.data > th.data, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 th.header > th.header { border: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > p { margin: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .batch { display: table }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .toc { display: none }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .proc_note_group, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .proc_title_group { margin-bottom: 1em }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 p.proctitle { margin: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 p.note, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 p.warning, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 p.error, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 p.fatal { display: table }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .notebanner, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .warnbanner, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .errorbanner, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .fatalbanner,
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .notecontent, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .warncontent, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .errorcontent, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .notebanner, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .warnbanner, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .errorbanner, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .fatalbanner { padding-right: 0 }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body > div > ol li { text-align: left }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .c { text-align: center }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .r { text-align: right }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .l { text-align: left }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .j { text-align: justify }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .d { text-align: right }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .b { vertical-align: bottom }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .m { vertical-align: middle }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .t { vertical-align: top }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .batch > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .batch > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .batch { border: hidden; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bycontentfolder {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer > colgroup > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer > colgroup, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer > * > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer > tfoot { border: none; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .cell, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .contentfolder, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .contentitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .contentproclabel, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .data, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .folderaction {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .graph > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .graph > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .graph { border: hidden; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .indexaction, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .indexitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer > colgroup > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer > colgroup, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer > * > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer > tfoot, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion > colgroup > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion > colgroup, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion > * > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion > tfoot { border: none; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutcontainer, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .layoutregion {
+    border: none;
+    border-spacing: 30px;
+    }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list3, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list4, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list5, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list6, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list7, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list8, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem3, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem4, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem5, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem6, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem7, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem8, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .output > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .output > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .output { border: hidden; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .pagesitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .pagesproclabel, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip > colgroup > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip > colgroup, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip > * > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip > tfoot { border: none; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter10, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter2, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter3, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter4, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter5, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter6, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter7, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter8, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle10, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle2, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle3, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle4, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle5, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle6, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle7, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle8, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > colgroup > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > colgroup, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > * > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer > tfoot { border: none; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .table > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .table > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .table { border: hidden; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer > colgroup > col, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer > colgroup, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer > * > tr, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer > thead, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer > tbody, .ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer > tfoot { border: none; }
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_d24b8a61-de2e-4621-9352-b618a08686e5 .warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+<script src="6%20-%20Cluster%20Groups%20-%20Results_%2004%20-%20CaseStudy14%20-%20Profiling.sas_files/sf_main.dms"></script></head>
+<body class="body">
+<div id="div_d24b8a61-de2e-4621-9352-b618a08686e5" class="c body">
+<h1 class="body toc">Results: 04 - CaseStudy14 - Profiling.sas</h1>
+<section data-name="Print" data-sec-type="proc">
+<h1 class="contentprocname toc">The PRINT Procedure</h1>
+<section id="IDX">
+<h1 class="bycontentfolder toc">Cluster=1</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=1</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">3</td>
+<td class="r data">0.6</td>
+<td class="r data">471.520</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">4.97</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">3</td>
+<td class="r data">0.6</td>
+<td class="r data">42.175</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data">0.43</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">3</td>
+<td class="r data">0.6</td>
+<td class="r data">26.429</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.18</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">3</td>
+<td class="r data">0.6</td>
+<td class="r data">13.446</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.07</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">3</td>
+<td class="r data">0.6</td>
+<td class="r data">17.951</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-1.05</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX1">
+<h1 class="bycontentfolder toc">Cluster=2</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=2</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">101</td>
+<td class="r data">19.6</td>
+<td class="r data">30.710</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.70</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">101</td>
+<td class="r data">19.6</td>
+<td class="r data">25.596</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data">0.58</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">101</td>
+<td class="r data">19.6</td>
+<td class="r data">11.361</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.49</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">101</td>
+<td class="r data">19.6</td>
+<td class="r data">32.333</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.69</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">101</td>
+<td class="r data">19.6</td>
+<td class="r data">167.156</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data" style="white-space: nowrap">-0.82</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX2">
+<h1 class="bycontentfolder toc">Cluster=3</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=3</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">143</td>
+<td class="r data">27.8</td>
+<td class="r data">47.677</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data">1.05</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">143</td>
+<td class="r data">27.8</td>
+<td class="r data">21.656</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.26</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">13</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">143</td>
+<td class="r data">27.8</td>
+<td class="r data">12.300</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">14</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">143</td>
+<td class="r data">27.8</td>
+<td class="r data">194.780</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data" style="white-space: nowrap">-0.30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">15</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">143</td>
+<td class="r data">27.8</td>
+<td class="r data">18.366</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data" style="white-space: nowrap">-0.80</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX3">
+<h1 class="bycontentfolder toc">Cluster=4</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=4</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">16</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">80</td>
+<td class="r data">15.5</td>
+<td class="r data">21.024</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data">1.49</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">17</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">80</td>
+<td class="r data">15.5</td>
+<td class="r data">27.241</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data">0.93</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">18</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">80</td>
+<td class="r data">15.5</td>
+<td class="r data">20.215</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data" style="white-space: nowrap">-0.57</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">19</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">80</td>
+<td class="r data">15.5</td>
+<td class="r data">31.520</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.78</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">20</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">80</td>
+<td class="r data">15.5</td>
+<td class="r data">169.453</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data" style="white-space: nowrap">-0.78</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX4">
+<h1 class="bycontentfolder toc">Cluster=5</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=5</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">21</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">141</td>
+<td class="r data">27.4</td>
+<td class="r data">239.403</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">0.55</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">22</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">141</td>
+<td class="r data">27.4</td>
+<td class="r data">29.210</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.52</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">23</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">141</td>
+<td class="r data">27.4</td>
+<td class="r data">13.092</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.14</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">24</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">141</td>
+<td class="r data">27.4</td>
+<td class="r data">36.830</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.18</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">25</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">141</td>
+<td class="r data">27.4</td>
+<td class="r data">20.868</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.43</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX5">
+<h1 class="bycontentfolder toc">Cluster=6</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=6</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">26</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">47</td>
+<td class="r data">9.1</td>
+<td class="r data">316.485</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">2.02</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">27</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">47</td>
+<td class="r data">9.1</td>
+<td class="r data">27.616</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">28</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">47</td>
+<td class="r data">9.1</td>
+<td class="r data">39.605</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data">0.13</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">29</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">47</td>
+<td class="r data">9.1</td>
+<td class="r data">13.090</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.14</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">30</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">47</td>
+<td class="r data">9.1</td>
+<td class="r data">19.689</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.68</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+</div>
+
+
+</body></html>

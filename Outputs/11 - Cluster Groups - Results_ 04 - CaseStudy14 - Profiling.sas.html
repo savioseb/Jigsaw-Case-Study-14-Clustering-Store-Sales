@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html class="ods_65b182c9-d5b9-43fd-9242-753d2a854701" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="SAS 9.4" name="generator">
+<title>Results:  04 - CaseStudy14 - Profiling.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c section > table, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c section > pre, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c div > table,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c div > pre, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c article > table, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c article > pre,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j section > table, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j section > pre, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j div > table,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j div > pre, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j article > table, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j article > pre,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c p.note, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c p.warning, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c p.error, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c p.fatal,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j p.note, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j p.warning, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j p.error, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j p.fatal,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.c > table.layoutcontainer, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.l table, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.l pre, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.l p.note,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.l p.warning, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.l p.error, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.l p.fatal { margin-left: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.c table, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.c pre, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.c p.note,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.c p.warning, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.c p.error, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r table, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r pre, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r p.note,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r table, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r pre, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r p.note,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r p.warning, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r p.error, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion.r p.fatal { margin-right: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 article, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 aside, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 details, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 figcaption, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 figure, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 footer, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 header, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 hgroup, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 nav, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 section { display: block }
+html.ods_65b182c9-d5b9-43fd-9242-753d2a854701 { font-size: 100% }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 ul, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 dd { margin: 0 0 0 40px }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 nav ul, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 img { border: 0; vertical-align: middle }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 svg:not(:root) { overflow: hidden }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 figure { margin: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 table { border-collapse: collapse; border-spacing: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 p { margin-top: 0; text-align: left }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 span { text-align: left }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 table { margin-bottom: 1em }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 td, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 td[class$="fixed"], .ods_65b182c9-d5b9-43fd-9242-753d2a854701 th[class$="fixed"] { white-space: pre }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 section, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 article { padding-top: 1px }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .stacked-value { text-align: left; display: block }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .stacked-cell > .stacked-value, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 td.data > td.data, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 th.data > td.data, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 th.data > th.data, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 td.data > th.data, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 th.header > th.header { border: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > p { margin: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .batch { display: table }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .toc { display: none }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .proc_note_group, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .proc_title_group { margin-bottom: 1em }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 p.proctitle { margin: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 p.note, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 p.warning, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 p.error, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 p.fatal { display: table }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .notebanner, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .warnbanner, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .errorbanner, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .fatalbanner,
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .notecontent, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .warncontent, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .errorcontent, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .notebanner, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .warnbanner, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .errorbanner, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .fatalbanner { padding-right: 0 }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body > div > ol li { text-align: left }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .c { text-align: center }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .r { text-align: right }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .l { text-align: left }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .j { text-align: justify }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .d { text-align: right }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .b { vertical-align: bottom }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .m { vertical-align: middle }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .t { vertical-align: top }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .batch > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .batch > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .batch { border: hidden; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bycontentfolder {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer > colgroup > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer > colgroup, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer > * > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer > tfoot { border: none; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .cell, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .contentfolder, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .contentitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .contentproclabel, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .data, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .folderaction {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .graph > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .graph > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .graph { border: hidden; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .indexaction, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .indexitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer > colgroup > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer > colgroup, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer > * > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer > tfoot, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion > colgroup > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion > colgroup, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion > * > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion > tfoot { border: none; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutcontainer, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .layoutregion {
+    border: none;
+    border-spacing: 30px;
+    }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list3, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list4, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list5, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list6, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list7, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list8, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem3, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem4, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem5, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem6, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem7, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem8, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .output > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .output > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .output { border: hidden; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .pagesitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .pagesproclabel, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip > colgroup > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip > colgroup, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip > * > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip > tfoot { border: none; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter10, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter2, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter3, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter4, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter5, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter6, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter7, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter8, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle10, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle2, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle3, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle4, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle5, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle6, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle7, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle8, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > colgroup > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > colgroup, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > * > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer > tfoot { border: none; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .table > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .table > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .table { border: hidden; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer > colgroup > col, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer > colgroup, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer > * > tr, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer > thead, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer > tbody, .ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer > tfoot { border: none; }
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_65b182c9-d5b9-43fd-9242-753d2a854701 .warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+<script src="11%20-%20Cluster%20Groups%20-%20Results_%2004%20-%20CaseStudy14%20-%20Profiling.sas_files/sf_main.dms"></script></head>
+<body class="body">
+<div id="div_65b182c9-d5b9-43fd-9242-753d2a854701" class="c body">
+<h1 class="body toc">Results: 04 - CaseStudy14 - Profiling.sas</h1>
+<section data-name="Print" data-sec-type="proc">
+<h1 class="contentprocname toc">The PRINT Procedure</h1>
+<section id="IDX">
+<h1 class="bycontentfolder toc">Cluster=1</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=1</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">1</td>
+<td class="r data">0.2</td>
+<td class="r data">446.875</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">4.50</td>
+<td class="r data">4.50</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">1</td>
+<td class="r data">0.2</td>
+<td class="r data">4.755</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-1.85</td>
+<td class="r data">1.85</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">1</td>
+<td class="r data">0.2</td>
+<td class="r data">32.028</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.86</td>
+<td class="r data">0.86</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">1</td>
+<td class="r data">0.2</td>
+<td class="r data">40.140</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data">0.20</td>
+<td class="r data">0.20</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">1</td>
+<td class="r data">0.2</td>
+<td class="r data">23.077</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data">0.04</td>
+<td class="r data">0.04</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX1">
+<h1 class="bycontentfolder toc">Cluster=2</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=2</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">121</td>
+<td class="r data">23.5</td>
+<td class="r data">31.082</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.74</td>
+<td class="r data">0.74</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">121</td>
+<td class="r data">23.5</td>
+<td class="r data">34.560</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.44</td>
+<td class="r data">0.44</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">121</td>
+<td class="r data">23.5</td>
+<td class="r data">21.263</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.34</td>
+<td class="r data">0.34</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">121</td>
+<td class="r data">23.5</td>
+<td class="r data">13.095</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.14</td>
+<td class="r data">0.14</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">121</td>
+<td class="r data">23.5</td>
+<td class="r data">212.428</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">0.04</td>
+<td class="r data">0.04</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX2">
+<h1 class="bycontentfolder toc">Cluster=3</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=3</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">48</td>
+<td class="r data">9.3</td>
+<td class="r data">277.854</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">1.28</td>
+<td class="r data">1.28</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">48</td>
+<td class="r data">9.3</td>
+<td class="r data">29.759</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.58</td>
+<td class="r data">0.58</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">13</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">48</td>
+<td class="r data">9.3</td>
+<td class="r data">20.738</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.45</td>
+<td class="r data">0.45</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">14</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">48</td>
+<td class="r data">9.3</td>
+<td class="r data">12.606</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.24</td>
+<td class="r data">0.24</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">15</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">48</td>
+<td class="r data">9.3</td>
+<td class="r data">36.897</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.17</td>
+<td class="r data">0.17</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX3">
+<h1 class="bycontentfolder toc">Cluster=4</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=4</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">16</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">37</td>
+<td class="r data">7.2</td>
+<td class="r data">28.616</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data">1.22</td>
+<td class="r data">1.22</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">17</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">37</td>
+<td class="r data">7.2</td>
+<td class="r data">18.889</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data">1.05</td>
+<td class="r data">1.05</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">18</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">37</td>
+<td class="r data">7.2</td>
+<td class="r data">32.256</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.70</td>
+<td class="r data">0.70</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">19</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">37</td>
+<td class="r data">7.2</td>
+<td class="r data">20.239</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data" style="white-space: nowrap">-0.57</td>
+<td class="r data">0.57</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">20</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">37</td>
+<td class="r data">7.2</td>
+<td class="r data">183.667</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data" style="white-space: nowrap">-0.51</td>
+<td class="r data">0.51</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX4">
+<h1 class="bycontentfolder toc">Cluster=5</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=5</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">21</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">9</td>
+<td class="r data">1.7</td>
+<td class="r data">25.447</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data">2.39</td>
+<td class="r data">2.39</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">22</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">9</td>
+<td class="r data">1.7</td>
+<td class="r data">18.697</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data" style="white-space: nowrap">-0.76</td>
+<td class="r data">0.76</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">23</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">9</td>
+<td class="r data">1.7</td>
+<td class="r data">33.806</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.52</td>
+<td class="r data">0.52</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">24</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">9</td>
+<td class="r data">1.7</td>
+<td class="r data">22.050</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.18</td>
+<td class="r data">0.18</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">25</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">9</td>
+<td class="r data">1.7</td>
+<td class="r data">203.683</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data" style="white-space: nowrap">-0.13</td>
+<td class="r data">0.13</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX5">
+<h1 class="bycontentfolder toc">Cluster=6</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=6</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">26</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">66</td>
+<td class="r data">12.8</td>
+<td class="r data">33.040</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.98</td>
+<td class="r data">0.98</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">27</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">66</td>
+<td class="r data">12.8</td>
+<td class="r data">30.534</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.90</td>
+<td class="r data">0.90</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">28</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">66</td>
+<td class="r data">12.8</td>
+<td class="r data">168.226</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data" style="white-space: nowrap">-0.80</td>
+<td class="r data">0.80</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">29</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">66</td>
+<td class="r data">12.8</td>
+<td class="r data">11.173</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.53</td>
+<td class="r data">0.53</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">30</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">66</td>
+<td class="r data">12.8</td>
+<td class="r data">25.253</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data">0.50</td>
+<td class="r data">0.50</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX6">
+<h1 class="bycontentfolder toc">Cluster=7</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=7</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">31</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">58</td>
+<td class="r data">11.3</td>
+<td class="r data">45.793</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data">0.84</td>
+<td class="r data">0.84</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">32</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">58</td>
+<td class="r data">11.3</td>
+<td class="r data">19.875</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.64</td>
+<td class="r data">0.64</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">33</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">58</td>
+<td class="r data">11.3</td>
+<td class="r data">241.800</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">0.60</td>
+<td class="r data">0.60</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">34</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">58</td>
+<td class="r data">11.3</td>
+<td class="r data">21.616</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data" style="white-space: nowrap">-0.40</td>
+<td class="r data">0.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">35</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">58</td>
+<td class="r data">11.3</td>
+<td class="r data">12.715</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.22</td>
+<td class="r data">0.22</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX7">
+<h1 class="bycontentfolder toc">Cluster=8</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=8</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">36</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">29</td>
+<td class="r data">5.6</td>
+<td class="r data">328.578</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">2.25</td>
+<td class="r data">2.25</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">37</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">29</td>
+<td class="r data">5.6</td>
+<td class="r data">18.456</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.94</td>
+<td class="r data">0.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">38</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">29</td>
+<td class="r data">5.6</td>
+<td class="r data">27.594</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data">0.32</td>
+<td class="r data">0.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">39</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">29</td>
+<td class="r data">5.6</td>
+<td class="r data">40.722</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data">0.26</td>
+<td class="r data">0.26</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">40</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">29</td>
+<td class="r data">5.6</td>
+<td class="r data">13.228</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.11</td>
+<td class="r data">0.11</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX8">
+<h1 class="bycontentfolder toc">Cluster=9</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=9</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">41</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">100</td>
+<td class="r data">19.4</td>
+<td class="r data">49.171</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data">1.22</td>
+<td class="r data">1.22</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">42</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">100</td>
+<td class="r data">19.4</td>
+<td class="r data">16.150</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data" style="white-space: nowrap">-1.06</td>
+<td class="r data">1.06</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">43</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">100</td>
+<td class="r data">19.4</td>
+<td class="r data">183.767</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data" style="white-space: nowrap">-0.51</td>
+<td class="r data">0.51</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">44</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">100</td>
+<td class="r data">19.4</td>
+<td class="r data">12.341</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data" style="white-space: nowrap">-0.29</td>
+<td class="r data">0.29</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">45</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">100</td>
+<td class="r data">19.4</td>
+<td class="r data">22.338</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-0.11</td>
+<td class="r data">0.11</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX9">
+<h1 class="bycontentfolder toc">Cluster=10</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=10</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">46</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">2</td>
+<td class="r data">0.4</td>
+<td class="r data">483.842</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data">5.20</td>
+<td class="r data">5.20</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">47</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">2</td>
+<td class="r data">0.4</td>
+<td class="r data">15.388</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data" style="white-space: nowrap">-1.59</td>
+<td class="r data">1.59</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">48</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">2</td>
+<td class="r data">0.4</td>
+<td class="r data">17.791</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data">0.83</td>
+<td class="r data">0.83</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">49</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">2</td>
+<td class="r data">0.4</td>
+<td class="r data">43.192</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data">0.54</td>
+<td class="r data">0.54</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">50</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">2</td>
+<td class="r data">0.4</td>
+<td class="r data">23.629</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data" style="white-space: nowrap">-0.16</td>
+<td class="r data">0.16</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX10">
+<h1 class="bycontentfolder toc">Cluster=11</h1>
+<article>
+<h1 class="contentitem toc">Data Set CS14.MERGING_THE_CLASSIFIED_DATA</h1>
+<p class="c byline" style="border-spacing: 0">Cluster=11</p>
+<table class="table" style="border-spacing: 0">
+<colgroup><col></colgroup><colgroup><col><col><col><col><col><col><col><col></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Obs</th>
+<th class="header" scope="col">Variable</th>
+<th class="r header" scope="col">No_Of_Stores</th>
+<th class="r header" scope="col">Cluster_No_Of_Stores_Percent</th>
+<th class="r header" scope="col">Cluster_Mean</th>
+<th class="r header" scope="col">Population_Mean</th>
+<th class="r header" scope="col">Population_StdDev</th>
+<th class="r header" scope="col">Z_Score</th>
+<th class="r header" scope="col">Abs_Z_Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">51</th>
+<td class="data">Tobacco and Alcohol Category</td>
+<td class="r data">44</td>
+<td class="r data">8.5</td>
+<td class="r data">29.890</td>
+<td class="r data">22.880</td>
+<td class="r data">4.7099</td>
+<td class="r data">1.49</td>
+<td class="r data">1.49</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">52</th>
+<td class="data">Average Sale per Square Feet</td>
+<td class="r data">44</td>
+<td class="r data">8.5</td>
+<td class="r data">141.380</td>
+<td class="r data">210.364</td>
+<td class="r data">52.5738</td>
+<td class="r data" style="white-space: nowrap">-1.31</td>
+<td class="r data">1.31</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">53</th>
+<td class="data">Health and Beauty Category</td>
+<td class="r data">44</td>
+<td class="r data">8.5</td>
+<td class="r data">19.079</td>
+<td class="r data">13.767</td>
+<td class="r data">4.8775</td>
+<td class="r data">1.09</td>
+<td class="r data">1.09</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">54</th>
+<td class="data">Frozen Foods Category</td>
+<td class="r data">44</td>
+<td class="r data">8.5</td>
+<td class="r data">18.311</td>
+<td class="r data">24.934</td>
+<td class="r data">8.2562</td>
+<td class="r data" style="white-space: nowrap">-0.80</td>
+<td class="r data">0.80</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">55</th>
+<td class="data">Fresh Foods Category</td>
+<td class="r data">44</td>
+<td class="r data">8.5</td>
+<td class="r data">32.720</td>
+<td class="r data">38.420</td>
+<td class="r data">8.7953</td>
+<td class="r data" style="white-space: nowrap">-0.65</td>
+<td class="r data">0.65</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+</div>
+
+
+</body></html>
